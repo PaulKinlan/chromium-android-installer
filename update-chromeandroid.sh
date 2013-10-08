@@ -12,7 +12,10 @@ echo "Downlaoding \n\t$REMOTE_APK \n\tto $TMP_DL\n"
 curl $REMOTE_APK -o $TMP_DL  || { echo "FATAL: downloading $TMP_APK failed"; exit 1; }
 
 echo "Extracting ChromiumTestShell.apk \n\t to $TMP_APK\n"
-unzip -p $TMP_DL chrome-android/apks/ChromiumTestShell.apk >> $TMP_APK || { echo "FATAL: extracting $TMP_APK failed"; exit 1; }
+unzip -p $TMP_DL chrome-android/apks/ChromiumTestShell.apk >> $TMP_APK  || { echo "FATAL: extracting $TMP_APK failed"; exit 1; }
+
+echo "Uninstalling previous org.chromium.chrome.testshell, keeping data and cache\n"
+adb shell pm uninstall -k org.chromium.chrome.testshell || { echo "FATAL: Uninstalling previous version failed"; exit 1; }
 
 echo "Installing APK"
 
@@ -33,9 +36,6 @@ while getopts "rsl" opt; do
 			;;
 		s)
 			echo "- on SD card \n" >&2
-			;;
-		\?)
-			echo "Invalid option: -$OPTARG" >&2
 			;;
 	esac
 done
