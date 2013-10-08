@@ -1,5 +1,5 @@
 # Install
-Get the latest Chrome on Android Test Shell and installs it on all running emulators and connected devices
+Get the latest Chrome on Android Test Shell and install it on all running emulators and connected devices with
 
 `./install-chromeandroid.sh [-slr]`
 
