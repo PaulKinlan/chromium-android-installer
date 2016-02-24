@@ -11,7 +11,7 @@ TMP_CHROME_APK=`mktemp -t chrome-android.XXXX`   || { echo "FATAL: Could not cre
 TMP_CONTENT_APK=`mktemp -t chrome-android.XXXX`  || { echo "FATAL: Could not create temp file"; exit 1; }
 REMOTE_APK=http://commondatastorage.googleapis.com/chromium-browser-continuous/Android/$LATEST/chrome-android.zip
 
-echo "Downlaoding \n\t$REMOTE_APK \n\tto $TMP_DL\n"
+echo "Downloading \n\t$REMOTE_APK \n\tto $TMP_DL\n"
 curl $REMOTE_APK -o $TMP_DL  || { echo "FATAL: downloading $TMP_APK failed"; exit 1; }
 
 echo "Extracting ChromeShell.apk \n\t to $TMP_CHROME_APK...\n"
